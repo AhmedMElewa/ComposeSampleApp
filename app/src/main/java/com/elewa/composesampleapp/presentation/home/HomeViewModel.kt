@@ -33,7 +33,10 @@ class HomeViewModel @Inject constructor(
     private val deleteItemsUseCase: DeleteItemsUseCase
 ) : ContainerHost<ItemState, ItemSideEffect>, ViewModel() {
 
-    override val container = container<ItemState, ItemSideEffect>(ItemState())
+    override val container = container<ItemState, ItemSideEffect>(
+        ItemState(),
+        settings = Container.Settings(intentDispatcher = Dispatchers.Unconfined)
+    )
 
 
     init {
